@@ -1,0 +1,29 @@
+* Comp 15 lab 0: scavenger hunt
+* Fall 2020
+* Dylan Maloy
+*
+* Answers to the scavenger hunt questions!
+
+* 1. course website or the course online forum
+* 2. You can reference it & use smaller functions as long as you acknowledge it
+* 3. When working on the class. It is against policy to use/share outside of the class unless for personal use
+* 4. No
+* 5. You can consult public literature for hints/techinques/solutions but they must reference anything that contributes to your solution
+* 6. view the course website & online forum
+* 7. read & re-read the assignment to make sure you KNOW that there is a mistake 
+* 8. 2 weeks
+* 9. extension tokens. 1 day per token. no more than 2. each part counts as a token.
+* 10. when you believe that you need the extra help (up to you)
+
+* 1. header comment with name, due date, assignment name, and brief description of the file 
+* 2. a purpose should have a concise yet in-depth purpose of the function/class
+* 3. they should include the information that makes the "non-obvious" code "obvious"
+* 4. when it is important to the rest of the code
+* 5. readme
+* 6. && || ! null vs. nullptr
+* 7. 4 spaces 
+* 8. use variables
+* 9. submitting  well written code 
+
+
+
