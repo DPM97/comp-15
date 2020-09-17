@@ -1,0 +1,31 @@
+Student: Dylan Maloy
+Class: Comp 15
+Assignment: HW1
+
+Purpose: What does the program do?
+
+  Create a functional char arraylist class which includes all of the constructors, destructors, operators, 
+  and methods described in the briefing.
+
+Acknowledgements: Help that I recieved.
+
+  Makefile Reference: https://www.cs.tufts.edu/comp/15/reference/Makefile.tutorial
+  Pointer reference: Lecture
+  Assignment Operator / Copy Constructor: https://www.cs.tufts.edu/comp/15/notes/big_three/copy_and_assignment_fixed.cpp
+
+Compile Instructions: How to run the program.
+  1. make build
+  2. ./main
+
+Usage: Why is this useful?
+
+  Assuming we are just comparing an arraylist to a standard array, the dynamic arraylist allows for resizing & a more efficient use of space.
+  In this case, we don't know how many elements we are going to need. This would be an issue for the array, however, we can re-size the arraylist
+  data structure as needed. Obviously, the arraylist implementation will not be as efficent (time complexity wise) as a normal array with all of the 
+  resizing methods, but this small sacrifice is usually worth it.
+
+Testing: How the implementation was tested.
+
+  All of my testing was completed in the testCharArrayList.cpp main function. Basically, it runs through each function & in between prints
+  the visual representation of the arraylist. This shows that the methods are working correctly, and the data structure is being manipulated 
+  accordingly in these cases. 
