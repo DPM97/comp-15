@@ -33,6 +33,8 @@ void removeAt();
 void replaceAt();
 void concatenate();
 void find();
+void assignmentOperator();
+void copyConstructor();
 
 int main()
 {
@@ -53,6 +55,8 @@ int main()
     replaceAt();
     concatenate();
     find();
+    assignmentOperator();
+    copyConstructor();
 }
 
 /**
@@ -462,3 +466,45 @@ void find() {
     cout << endl;
 }
 
+/**
+     * FUNCTION: assignmentOperator
+     * 
+     * PURPOSE: test assignment operator
+     *  
+     * PARAMETERS: N/A
+     * 
+     * RETURN: void
+     * 
+     * MISC: N/A
+     **/
+
+void assignmentOperator() {
+    LinkedList<E> list('a');
+    LinkedList<E> list2;
+    list2 = list;
+    cout << "assigning list to list2 - printing list and list2" << endl;
+    list.print();
+    list2.print();
+    cout << endl;
+}
+
+/**
+     * FUNCTION: copyConstructor
+     * 
+     * PURPOSE: test copy constructor
+     *  
+     * PARAMETERS: N/A
+     * 
+     * RETURN: void
+     * 
+     * MISC: N/A
+     **/
+
+void copyConstructor() {
+    LinkedList<E> list('a');
+    LinkedList<E> list2(list);
+    cout << "copying list to list2 - printing list and list2" << endl;
+    list.print();
+    list2.print();
+    cout << endl;
+}

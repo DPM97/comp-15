@@ -24,7 +24,7 @@
 using namespace std;
 
 // Default constructor
-template<typename E>
+template <typename E>
 LinkedList<E>::LinkedList()
 {
     length = 0;
@@ -34,8 +34,9 @@ LinkedList<E>::LinkedList()
 }
 
 // Constructor taking a single element
-template<typename E>
-LinkedList<E>::LinkedList(E element) {
+template <typename E>
+LinkedList<E>::LinkedList(E element)
+{
     Node *node = new Node;
     node->val = element;
     node->next = nullptr;
@@ -46,8 +47,9 @@ LinkedList<E>::LinkedList(E element) {
 }
 
 // Constructor taking an array of elements and a lenght
-template<typename E>
-LinkedList<E>::LinkedList(E elements[], int len) {
+template <typename E>
+LinkedList<E>::LinkedList(E elements[], int len)
+{
     Node *prevNode = new Node;
     prevNode->val = elements[0];
     prevNode->next = nullptr;
@@ -55,7 +57,8 @@ LinkedList<E>::LinkedList(E elements[], int len) {
     back = prevNode;
     length = 1;
     Node *node;
-    for (int i = 1; i < len; i++) {
+    for (int i = 1; i < len; i++)
+    {
         node = new Node;
         node->val = elements[i];
         node->next = nullptr;
@@ -72,21 +75,26 @@ LinkedList<E>::LinkedList(E elements[], int len) {
 }
 
 // Copy constructor
-template<typename E>
-LinkedList<E>::LinkedList(const LinkedList<E> &other) {
-	length   = other.length;
+template <typename E>
+LinkedList<E>::LinkedList(const LinkedList<E> &other)
+{
+    length = other.length;
     curr_pos = nullptr;
 
-    if (other.front == nullptr) {         
+    if (other.front == nullptr)
+    {
         front = nullptr;
         back = nullptr;
-    } else {                            
+    }
+    else
+    {
         front = new Node;
         front->val = other.front->val;
         Node *curr = front;
         Node *orig = other.front;
 
-        while (orig->next != nullptr) { 
+        while (orig->next != nullptr)
+        {
             curr->next = new Node;
             curr->next->val = orig->next->val;
             orig = orig->next;
@@ -97,8 +105,9 @@ LinkedList<E>::LinkedList(const LinkedList<E> &other) {
 }
 
 // Default destructor
-template<typename E>
-LinkedList<E>::~LinkedList() {
+template <typename E>
+LinkedList<E>::~LinkedList()
+{
     clear();
 }
 
@@ -114,9 +123,11 @@ LinkedList<E>::~LinkedList() {
      * MISC: N/A
      **/
 
-template<typename E>
-bool LinkedList<E>::isEmpty() {
-    if (length == 0) return true;
+template <typename E>
+bool LinkedList<E>::isEmpty()
+{
+    if (length == 0)
+        return true;
     return false;
 }
 
@@ -132,12 +143,15 @@ bool LinkedList<E>::isEmpty() {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::clear() {
-    if (length == 0) return;
+template <typename E>
+void LinkedList<E>::clear()
+{
+    if (length == 0)
+        return;
     curr_pos = front;
     Node *next;
-    while (length > 0) {
+    while (length > 0)
+    {
         next = curr_pos->next;
         delete curr_pos;
         curr_pos = next;
@@ -158,8 +172,9 @@ void LinkedList<E>::clear() {
      * MISC: N/A
      **/
 
-template<typename E>
-int LinkedList<E>::size() {
+template <typename E>
+int LinkedList<E>::size()
+{
     return length;
 }
 
@@ -175,9 +190,11 @@ int LinkedList<E>::size() {
      * MISC: N/A
      **/
 
-template<typename E>
-E LinkedList<E>::first() {
-    if (length == 0) throw runtime_error("cannot get first of empty list");
+template <typename E>
+E LinkedList<E>::first()
+{
+    if (length == 0)
+        throw runtime_error("cannot get first of empty list");
     return front->val;
 }
 
@@ -193,9 +210,11 @@ E LinkedList<E>::first() {
      * MISC: N/A
      **/
 
-template<typename E>
-E LinkedList<E>::last() {
-    if (length == 0) throw runtime_error("cannot get last of empty list");
+template <typename E>
+E LinkedList<E>::last()
+{
+    if (length == 0)
+        throw runtime_error("cannot get last of empty list");
     return back->val;
 }
 
@@ -211,17 +230,20 @@ E LinkedList<E>::last() {
      * MISC: N/A
      **/
 
-template<typename E>
-E LinkedList<E>::elementAt(int index) {
+template <typename E>
+E LinkedList<E>::elementAt(int index)
+{
 
-    if (index < 0 || index >= length) {
+    if (index < 0 || index >= length)
+    {
         ostringstream e;
         e << "index " << index << " not in range [0.." << length << "]";
         throw range_error(e.str());
     }
 
     curr_pos = front;
-    for (int i = 0; i < index; i++) {
+    for (int i = 0; i < index; i++)
+    {
         curr_pos = curr_pos->next;
     }
     return curr_pos->val;
@@ -239,8 +261,9 @@ E LinkedList<E>::elementAt(int index) {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::print() {   
+template <typename E>
+void LinkedList<E>::print()
+{
     cout << "[LinkedList of size " << length << "<<";
     curr_pos = front;
     for (int i = 0; i < length; i++)
@@ -263,8 +286,9 @@ void LinkedList<E>::print() {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::pushAtBack(E element) {
+template <typename E>
+void LinkedList<E>::pushAtBack(E element)
+{
     insertAt(element, length);
 }
 
@@ -280,8 +304,9 @@ void LinkedList<E>::pushAtBack(E element) {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::pushAtFront(E element) {
+template <typename E>
+void LinkedList<E>::pushAtFront(E element)
+{
     insertAt(element, 0);
 }
 
@@ -297,36 +322,43 @@ void LinkedList<E>::pushAtFront(E element) {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::insertAt(E element, int index) {
+template <typename E>
+void LinkedList<E>::insertAt(E element, int index)
+{
 
-    if (index < 0 || index > length) {
+    if (index < 0 || index > length)
+    {
         ostringstream e;
         e << "index " << index << " not in range [0.." << length << "]";
         throw range_error(e.str());
     }
 
     curr_pos = front;
-    for (int i = 0; i < index; i++) {
+    for (int i = 0; i < index; i++)
+    {
         curr_pos = curr_pos->next;
     }
 
     Node *newNode = new Node;
     newNode->val = element;
-    
-    if (length == 0) {
+
+    if (length == 0)
+    {
         front = back = newNode;
         length++;
         return;
     }
 
-    if (index == 0) {
+    if (index == 0)
+    {
         front->prev = newNode;
         newNode->next = front;
         front = newNode;
         length++;
         return;
-    } else if (index == length) {
+    }
+    else if (index == length)
+    {
         back->next = newNode;
         newNode->prev = back;
         back = newNode;
@@ -356,12 +388,14 @@ void LinkedList<E>::insertAt(E element, int index) {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::insertInOrder(E element) {
+template <typename E>
+void LinkedList<E>::insertInOrder(E element)
+{
 
     int index = 0;
     curr_pos = front;
-    while (curr_pos != nullptr && element >= curr_pos->val) {
+    while (curr_pos != nullptr && element >= curr_pos->val)
+    {
         curr_pos = curr_pos->next;
         index++;
     }
@@ -381,9 +415,11 @@ void LinkedList<E>::insertInOrder(E element) {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::popFromFront() {
-    if (length == 0) throw runtime_error("cannot pop from empty list");
+template <typename E>
+void LinkedList<E>::popFromFront()
+{
+    if (length == 0)
+        throw runtime_error("cannot pop from empty list");
     removeAt(0);
 }
 
@@ -399,9 +435,11 @@ void LinkedList<E>::popFromFront() {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::popFromBack() {
-    if (length == 0) throw runtime_error("cannot pop from empty list");
+template <typename E>
+void LinkedList<E>::popFromBack()
+{
+    if (length == 0)
+        throw runtime_error("cannot pop from empty list");
     removeAt(length - 1);
 }
 
@@ -417,25 +455,31 @@ void LinkedList<E>::popFromBack() {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::removeAt(int index) {
+template <typename E>
+void LinkedList<E>::removeAt(int index)
+{
 
-    if (index < 0 || index >= length) {
+    if (index < 0 || index >= length)
+    {
         ostringstream e;
         e << "index " << index << " not in range [0.." << length << "]";
         throw range_error(e.str());
     }
 
-    if (length == 1) clear();
+    if (length == 1)
+        clear();
 
-    if(index == 0) {
+    if (index == 0)
+    {
         Node *temp = front;
         front = temp->next;
         front->prev = nullptr;
         delete temp;
         length--;
         return;
-    } else if (index == length - 1) {
+    }
+    else if (index == length - 1)
+    {
         Node *temp = back;
         back = temp->prev;
         back->next = nullptr;
@@ -443,10 +487,10 @@ void LinkedList<E>::removeAt(int index) {
         length--;
         return;
     }
-    
 
     curr_pos = front;
-    for (int i = 0; i < index; i++) {
+    for (int i = 0; i < index; i++)
+    {
         curr_pos = curr_pos->next;
     }
 
@@ -470,17 +514,20 @@ void LinkedList<E>::removeAt(int index) {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::replaceAt(E element, int index) {
-    
-    if (index < 0 || index >= length) {
+template <typename E>
+void LinkedList<E>::replaceAt(E element, int index)
+{
+
+    if (index < 0 || index >= length)
+    {
         ostringstream e;
         e << "index " << index << " not in range [0.." << length << "]";
         throw range_error(e.str());
     }
 
     curr_pos = front;
-    for (int i = 0; i < index; i++) {
+    for (int i = 0; i < index; i++)
+    {
         curr_pos = curr_pos->next;
     }
     curr_pos->val = element;
@@ -498,10 +545,12 @@ void LinkedList<E>::replaceAt(E element, int index) {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::concatenate(LinkedList *list2) {
+template <typename E>
+void LinkedList<E>::concatenate(LinkedList *list2)
+{
 
-    for (int i = 0; i < list2->length; i++) {
+    for (int i = 0; i < list2->length; i++)
+    {
         pushAtBack(list2->elementAt(i));
     }
 }
@@ -518,23 +567,30 @@ void LinkedList<E>::concatenate(LinkedList *list2) {
      * MISC: N/A
      **/
 
-template<typename E>
-void LinkedList<E>::shrink() { }
+template <typename E>
+void LinkedList<E>::shrink() {}
 
-template<typename E>
-bool LinkedList<E>::find(E element) {
+template <typename E>
+bool LinkedList<E>::find(E element)
+{
     curr_pos = front;
-    if (occurances(element, 0) != 0) return true;
+    if (occurances(element, 0) != 0)
+        return true;
     return false;
 }
 
-template<typename E>
-int LinkedList<E>::occurances(E element, int i) {
-    if (curr_pos->val == element) i++; 
-    if (curr_pos->next != nullptr) {
+template <typename E>
+int LinkedList<E>::occurances(E element, int i)
+{
+    if (curr_pos->val == element)
+        i++;
+    if (curr_pos->next != nullptr)
+    {
         curr_pos = curr_pos->next;
         return occurances(element, i);
-    } else {
+    }
+    else
+    {
         return i;
     }
 }
