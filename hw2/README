@@ -54,4 +54,16 @@ Testing: How the implementation was tested.
   In short, there is one method to check the functionality of each 
   function / constructor / operator in the LinkedList class.
   All cases which could throw errors included a error case which would 
-  be caught by the program and printed to the console. 
+  be caught by the program and printed to the console. All of the test
+  cases in testLinkedList.cpp are implemented using chars, however, I have 
+  tested them using integers successfully.
+
+  Below is the basic testing protocol for all methods within the LinkedList class:
+    1. print the linked list before manipulation
+    2. print the type of manipulation that is going to occur
+    3. call the method that is being tested
+    4. print the manipulated linked list (or variable that changed if not the list)
+    5. if applicable, test an error-throwing case & catch/print the error
+
+
+  

@@ -13,6 +13,8 @@
 
 #include "CharArrayList.h"
 #include <iostream>
+#include <string>
+#include <sstream>
 #include <stdexcept>
 
 using namespace std;
@@ -36,8 +38,23 @@ CharArrayList::CharArrayList(char c)
 {
   numItems = 1;
   capacity = 1;
-  arr = new char[0];
+  arr = new char[1];
   arr[0] = c;
+}
+
+/**
+ * COPY CONSTRUCTOR
+ **/
+
+CharArrayList::CharArrayList(const CharArrayList &list)
+{ // copy constructor
+  numItems = list.numItems;
+  capacity = list.capacity;
+  arr = new char[capacity];
+  for (int i = 0; i < numItems; i++)
+  {
+    arr[i] = list.arr[i];
+  }
 }
 
 /**
@@ -49,18 +66,12 @@ CharArrayList::CharArrayList(char *cArr, int length)
   capacity = length;
   numItems = 0;
   arr = new char[length];
-  try
+  for (int i = 0; i < capacity; i++)
   {
-    for (int i = 0; i < capacity; i++)
-    {
-      arr[i] = cArr[i];
-      numItems++;
-    }
+    arr[i] = cArr[i];
+    numItems++;
   }
-  catch (out_of_range e)
-  {
-    cerr << "Length must be larger than the amount of items in the array. " << e.what() << endl;
-  }
+  delete[] cArr;
 }
 
 /**
@@ -146,6 +157,8 @@ int CharArrayList::size()
 
 char CharArrayList::first()
 {
+  if (numItems == 0)
+    throw runtime_error("cannot get first of empty ArrayList");
   return arr[0];
 }
 
@@ -163,6 +176,8 @@ char CharArrayList::first()
 
 char CharArrayList::last()
 {
+  if (numItems == 0)
+    throw runtime_error("cannot get last of empty ArrayList");
   return arr[numItems - 1];
 }
 
@@ -180,15 +195,13 @@ char CharArrayList::last()
 
 char CharArrayList::elementAt(int index)
 {
-  try
+  if (index > numItems || index < 0)
   {
-    return arr[index];
+    ostringstream e;
+    e << "index " << index << " not in range [0.." << numItems - 1 << "]";
+    throw range_error(e.str());
   }
-  catch (out_of_range e)
-  {
-    cerr << e.what() << endl;
-    return '\0'; // return null char if error
-  }
+  return arr[index];
 }
 
 /**
@@ -280,33 +293,33 @@ void CharArrayList::pushAtFront(char c)
 
 void CharArrayList::insertAt(char c, int index)
 {
-  try
+  if (numItems == capacity)
+    expand();
+
+  numItems++;
+
+  if (index > numItems || index < 0)
   {
-    if (numItems == capacity)
-      expand();
-
-    numItems++;
-
-    char *tempArr = new char[capacity];
-    tempArr[index] = c;
-
-    for (int i = 0; i < index; i++)
-    {
-      tempArr[i] = arr[i];
-    }
-
-    for (int i = index + 1; i < numItems; i++)
-    {
-      tempArr[i] = arr[i - 1];
-    }
-
-    delete[] arr;
-    arr = tempArr;
+    ostringstream e;
+    e << "index " << index << " not in range [0.." << numItems - 1 << "]";
+    throw range_error(e.str());
   }
-  catch (out_of_range e)
+
+  char *tempArr = new char[capacity];
+  tempArr[index] = c;
+
+  for (int i = 0; i < index; i++)
   {
-    cerr << e.what() << endl;
+    tempArr[i] = arr[i];
   }
+
+  for (int i = index + 1; i < numItems; i++)
+  {
+    tempArr[i] = arr[i - 1];
+  }
+
+  delete[] arr;
+  arr = tempArr;
 }
 
 /**
@@ -347,6 +360,8 @@ void CharArrayList::insertInOrder(char c)
 
 void CharArrayList::popFromFront()
 {
+  if (numItems == 0)
+    throw runtime_error("cannot pop from empty ArrayList");
 
   char *tempArr = new char[capacity];
 
@@ -377,6 +392,8 @@ void CharArrayList::popFromFront()
 
 void CharArrayList::popFromBack()
 {
+  if (numItems == 0)
+    throw runtime_error("cannot pop from empty ArrayList");
 
   char *tempArr = new char[capacity];
 
@@ -407,31 +424,32 @@ void CharArrayList::popFromBack()
 
 void CharArrayList::removeAt(int index)
 {
-  try
+
+  if (index > numItems || index < 0)
   {
-    char *tempArr = new char[capacity];
-
-    for (int i = 0; i < index; i++)
-    {
-      tempArr[i] = arr[i];
-    }
-
-    for (int i = index; i < numItems - 1; i++)
-    {
-      tempArr[i] = arr[i + 1];
-    }
-
-    numItems--;
-    if (numItems < capacity / 2)
-      reduce();
-
-    delete[] arr;
-    arr = tempArr;
+    ostringstream e;
+    e << "index " << index << " not in range [0.." << numItems - 1 << "]";
+    throw range_error(e.str());
   }
-  catch (out_of_range e)
+
+  char *tempArr = new char[capacity];
+
+  for (int i = 0; i < index; i++)
   {
-    cerr << e.what() << endl;
+    tempArr[i] = arr[i];
   }
+
+  for (int i = index; i < numItems - 1; i++)
+  {
+    tempArr[i] = arr[i + 1];
+  }
+
+  numItems--;
+  if (numItems < capacity / 2)
+    reduce();
+
+  delete[] arr;
+  arr = tempArr;
 }
 
 /**
@@ -448,14 +466,14 @@ void CharArrayList::removeAt(int index)
 
 void CharArrayList::replaceAt(char c, int index)
 {
-  try
+  if (index > numItems || index < 0)
   {
-    arr[index] = c;
+    ostringstream e;
+    e << "index " << index << " not in range [0.." << numItems - 1 << "]";
+    throw range_error(e.str());
   }
-  catch (out_of_range e)
-  {
-    cerr << e.what() << endl;
-  }
+
+  arr[index] = c;
 }
 
 /**
@@ -472,7 +490,7 @@ void CharArrayList::replaceAt(char c, int index)
 
 void CharArrayList::concatenate(CharArrayList *newArr)
 {
-  char *tempArr = new char[newArr->capacity + capacity];
+  char *tempArr = new char[newArr->numItems + numItems + 1];
 
   for (int i = 0; i < numItems; i++)
   {
@@ -485,10 +503,7 @@ void CharArrayList::concatenate(CharArrayList *newArr)
   }
 
   numItems += newArr->numItems;
-  capacity += newArr->capacity;
-
-  if (numItems == capacity)
-    expand();
+  capacity = newArr->numItems + numItems + 1;
 
   delete[] arr;
   arr = tempArr;

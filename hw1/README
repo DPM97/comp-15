@@ -4,28 +4,51 @@ Assignment: HW1
 
 Purpose: What does the program do?
 
-  Create a functional char arraylist class which includes all of the constructors, destructors, operators, 
-  and methods described in the briefing.
+  The purpose of this homework was to write a class and supporting methods
+  which manipulate the origional array on which the class is built.
+  Using these methods, it will essentially create an "array list" for chars.
 
 Acknowledgements: Help that I recieved.
 
-  Makefile Reference: https://www.cs.tufts.edu/comp/15/reference/Makefile.tutorial
+  Makefile Reference: 
+    https://www.cs.tufts.edu/comp/15/reference/Makefile.tutorial
   Pointer reference: Lecture
-  Assignment Operator / Copy Constructor: https://www.cs.tufts.edu/comp/15/notes/big_three/copy_and_assignment_fixed.cpp
+  Assignment Operator / Copy Constructor: 
+    https://www.cs.tufts.edu/comp/15/notes/big_three/copy_and_assignment_fixed.cpp
+
+
+Files：Files used.
+  CharArrayList.cpp - the class which includes all arraylist functionality 
+  and manipulation.
+  CharArrayList.h - the header file for CharArrayList.cpp 
+  testCharArrayList.cpp - tests the arraylist implementation
+  Makefile - builds the program
 
 Compile Instructions: How to run the program.
+  All build commands are consolodated in the makefile.
   1. make build
   2. ./main
 
+  Compiling without makefile:
+    1. clang++ -g3 -Wall -Wextra -std=c++11 -c -o CharArrayList.o CharArrayList.cpp
+    2. clang++ -g3 -Wall -Wextra -std=c++11 -c -o testCharArrayList.o testCharArrayList.cpp
+    3. clang++ -g3 -o main CharArrayList.o testCharArrayList.o
+    4. ./main
+
 Usage: Why is this useful?
 
-  Assuming we are just comparing an arraylist to a standard array, the dynamic arraylist allows for resizing & a more efficient use of space.
-  In this case, we don't know how many elements we are going to need. This would be an issue for the array, however, we can re-size the arraylist
-  data structure as needed. Obviously, the arraylist implementation will not be as efficent (time complexity wise) as a normal array with all of the 
+  Assuming we are just comparing an arraylist to a standard array, 
+  the dynamic arraylist allows for resizing & a more efficient use of space.
+  In this case, we don't know how many elements we are going to need. 
+  This would be an issue for the array, however, we can re-size the arraylist
+  data structure as needed. Obviously, the arraylist implementation will not be 
+  as efficent (time complexity wise) as a normal array with all of the 
   resizing methods, but this small sacrifice is usually worth it.
 
 Testing: How the implementation was tested.
 
-  All of my testing was completed in the testCharArrayList.cpp main function. Basically, it runs through each function & in between prints
-  the visual representation of the arraylist. This shows that the methods are working correctly, and the data structure is being manipulated 
-  accordingly in these cases. 
+  All of my testing was completed in the testCharArrayList.cpp file. 
+  In short, there is one method to check the functionality of each 
+  function / constructor / operator in the CharArrayList class.
+  All cases that are supposed to throw errors are caught and printed
+  to the console without terminating the program.

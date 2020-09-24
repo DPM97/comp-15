@@ -21,20 +21,11 @@ public:
      * CONSTRUCTORS, DESTRUCTORS, OPERATORS
      **/
 
-  CharArrayList();                       // initializes empty arraylist (capacity of 0)
-  CharArrayList(char c);                 // initializes arraylist with this single element (capacity 1)
-  CharArrayList(char *cArr, int length); // create list of size length with items cArr
-  CharArrayList(CharArrayList *list)
-  { // copy constructor
-    numItems = list->numItems;
-    capacity = list->capacity;
-    arr = new char[capacity];
-    for (int i = 0; i < numItems; i++)
-    {
-      arr[i] = list->arr[i];
-    }
-  }
-  CharArrayList &operator=(CharArrayList &assign)
+  CharArrayList();                          // initializes empty arraylist (capacity of 0)
+  CharArrayList(char c);                    // initializes arraylist with this single element (capacity 1)
+  CharArrayList(char *cArr, int length);    // create list of size length with items cArr
+  CharArrayList(const CharArrayList &list); // copy constructor
+  CharArrayList &operator=(const CharArrayList &assign)
   { // assignment operator
     if (this != &assign)
     {
@@ -50,7 +41,7 @@ public:
     }
     return *this;
   }
-  ~CharArrayList();
+  ~CharArrayList(); // default destructor
 
   /**
      * METHODS
@@ -66,7 +57,7 @@ public:
   void pushAtBack(char c);
   void pushAtFront(char c);
   void insertAt(char c, int index); // should throw error if index is out of range
-  void insertInOrder(char c);       // insert where element fits (alphabetical order)
+  void insertInOrder(char c);       // insert where element fits (assuming alphabetical order)
   void popFromFront();
   void popFromBack();
   void removeAt(int index);          // should throw error if index is out of range

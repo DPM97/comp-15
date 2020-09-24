@@ -1,0 +1,9 @@
+Dylan maloy
+09/15/20
+LAB 1
+COMP 15
+
+Acknowledgements:
+  Lecture:
+    Basic pointer knowledge. Using "new" to create a dynamically allocated array on the heap.
+    Using the "delete" method to clear the pointer.
