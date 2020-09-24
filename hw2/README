@@ -1,0 +1,57 @@
+Student: Dylan Maloy
+Class: Comp 15
+Assignment: HW2
+
+Purpose: What does the program do?
+
+  The purpose of this homework was to write c class and the supporting methods
+  to manipulate "node" structs to create a "linked list". Using these methods, 
+  it will be able to chain together said nodes and be able to create a list similar
+  in function to that of an array.
+
+Acknowledgements: Help that I recieved.
+
+  Template reference: 
+    https://www.cs.tufts.edu/comp/15/reference/templates/index.shtml
+  Linked list reference: 
+    Lecture
+  Assignment Operator / Copy Constructor: 
+    https://www.cs.tufts.edu/comp/15/notes/big_three/copy_and_assignment_fixed.cpp
+
+
+Files：Files used.
+  LinkedList.cpp - template / class which has all of the linked list functionality.
+  LinkedList.h - header file for the LinkedList class
+  testLinkedList.cpp - testing file for the linked list (tests every method)
+
+
+Compile Instructions: How to run the program.
+  All build commands are consolodated in the makefile.
+  1. make
+  2. ./cheshire 
+    or 
+    valgrind -v ./cheshire
+
+  Compiling without makefile:
+    1. clang++ -g3 -Wall -Wextra -std=c++11 -c -o CharArrayList.o CharArrayList.cpp
+    2. clang++ -g3 -Wall -Wextra -std=c++11 -c -o testCharArrayList.o testCharArrayList.cpp
+    3. clang++ -g3 -o main CharArrayList.o testCharArrayList.o
+    4. ./main
+
+Usage: Why is this useful?
+
+  Assuming comparison to a normal array or a dynamic arraylist, there are a few
+  reasons why the linked list might be useful. Firstly, the linkedlist is always
+  the correct size. Furthermore, the ability to change the pointers of nodes allows
+  the addition of new nodes and deletion of existing nodes to be much less intensive. 
+  To do this, you can just change the next and prev pointers on the nodes on either
+  side of the index you are trying to insert (or delete) at. A possible downside, however,
+  is the amount of space that a node (also the entire list) takes up.
+
+Testing: How the implementation was tested.
+
+  All of my testing was completed in the testLinkedList.cpp file. 
+  In short, there is one method to check the functionality of each 
+  function / constructor / operator in the LinkedList class.
+  All cases which could throw errors included a error case which would 
+  be caught by the program and printed to the console. 

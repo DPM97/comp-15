@@ -3,17 +3,16 @@
  *
  *  LinkedList.h
  *
- *  PURPOSE
+ *  PURPOSE: Header file for the LinkedList.cpp class
  *
- *  Modified By:
- *           On:
+ *  Modified By: Dylan Maloy
+ *           On: Sep 23 2020
  */
 
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
-typedef char E;
-//template <typename E>
+template <typename E>
 class LinkedList
 {
 public:

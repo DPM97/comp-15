@@ -1,16 +1,18 @@
 /*
  *  COMP 15 HW 2 Cheshire ConCATenation - Time to linked up in Fur
  *
- *  testLinkedList.cpp
+ *  testLinkedList<E>.cpp
  *
- *  PURPOSE
+ *  PURPOSE: Tests the LinkedList<E> class
  *
- *  Modified By:
- *           On:
+ *  Modified By: Dylan Maloy
+ *           On: Sep 23 2020
  */
 
 #include <iostream>
 #include "LinkedList.h"
+
+typedef char E;
 
 using namespace std;
 
@@ -66,7 +68,7 @@ int main()
      **/
 
 void isEmpty() {
-    LinkedList list;
+    LinkedList<E> list;
     cout << "testing isEmpty on empty arr..." << endl;
     cout << boolalpha << list.isEmpty() << endl;
     cout << "testing isEmpty on list w/ one element..." << endl;
@@ -88,7 +90,7 @@ void isEmpty() {
      **/
 
 void clear() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing clear on list..." << endl;
     list.clear();
@@ -109,7 +111,7 @@ void clear() {
      **/
 
 void size() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing size on list..." << endl;
     cout << list.size() << endl;
@@ -129,7 +131,7 @@ void size() {
      **/
 
 void first() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing first on list..." << endl;
     cout << list.first() << endl;
@@ -156,7 +158,7 @@ void first() {
      **/
 
 void last() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing last on list..." << endl;
     cout << list.last() << endl;
@@ -183,7 +185,7 @@ void last() {
      **/
 
 void elementAt() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing elementAt(1) on list..." << endl;
     cout << list.elementAt(1) << endl;
@@ -209,7 +211,7 @@ void elementAt() {
      **/
 
 void print() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     cout << "testing print on list..." << endl;
     list.print();
     cout << endl;
@@ -228,7 +230,7 @@ void print() {
      **/
 
 void pushAtBack() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing pushAtBack on list..." << endl;
     list.pushAtBack('r');
@@ -249,7 +251,7 @@ void pushAtBack() {
      **/
 
 void pushAtFront() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing pushAtFront on list..." << endl;
     list.pushAtFront('r');
@@ -270,7 +272,7 @@ void pushAtFront() {
      **/
 
 void insertAt() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing insertAt('r', 1) on list..." << endl;
     list.insertAt('r', 1);
@@ -297,7 +299,7 @@ void insertAt() {
      **/
 
 void insertInOrder() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing insertInOrder('b') on list..." << endl;
     list.insertInOrder('b');
@@ -318,7 +320,7 @@ void insertInOrder() {
      **/
 
 void popFromFront() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing popFromFront on list..." << endl;
     list.popFromFront();
@@ -346,7 +348,7 @@ void popFromFront() {
      **/
 
 void popFromBack() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing popFromBack on list..." << endl;
     list.popFromBack();
@@ -374,7 +376,7 @@ void popFromBack() {
      **/
 
 void removeAt() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing removeAt(1) on list..." << endl;
     list.removeAt(1);
@@ -402,7 +404,7 @@ void removeAt() {
      **/
 
 void replaceAt() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     list.print();
     cout << "testing replaceAt('v', 1) on list..." << endl;
     list.replaceAt('v', 1);
@@ -429,8 +431,8 @@ void replaceAt() {
      **/
 
 void concatenate() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
-    LinkedList list2(new char[2]{'x','y'}, 2);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list2(new char[2]{'x','y'}, 2);
     list.print();
     list2.print();
     cout << "concatenating the two lists..." << endl;
@@ -452,7 +454,7 @@ void concatenate() {
      **/
 
 void find() {
-    LinkedList list(new char[3]{'a', 'b', 'c'}, 3);
+    LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
     cout << "finding a in a --> b --> c" << endl;
     cout << boolalpha << list.find('a') << endl;
     cout << "finding r in a --> b --> c" << endl;

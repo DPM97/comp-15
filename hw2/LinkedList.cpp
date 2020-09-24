@@ -3,10 +3,10 @@
  *
  *  LinkedList.cpp
  *
- *  PURPOSE
+ *  PURPOSE: Implement a doubly linked-list and supporting methods
  *
- *  Modified By:
- *           On:
+ *  Modified By: Dylan Maloy
+ *           On: Sep 23 2020
  */
 
 //
@@ -22,12 +22,10 @@
 #include <iostream>
 
 using namespace std;
-typedef char E;
 
 // Default constructor
-// template<typename E>
-// LinkedList::LinkedList()
-LinkedList::LinkedList()
+template<typename E>
+LinkedList<E>::LinkedList()
 {
     length = 0;
     front = nullptr;
@@ -36,8 +34,8 @@ LinkedList::LinkedList()
 }
 
 // Constructor taking a single element
-// template<typename E>
-LinkedList::LinkedList(E element) {
+template<typename E>
+LinkedList<E>::LinkedList(E element) {
     Node *node = new Node;
     node->val = element;
     node->next = nullptr;
@@ -48,8 +46,8 @@ LinkedList::LinkedList(E element) {
 }
 
 // Constructor taking an array of elements and a lenght
-// template<typename E>
-LinkedList::LinkedList(E elements[], int len) {
+template<typename E>
+LinkedList<E>::LinkedList(E elements[], int len) {
     Node *prevNode = new Node;
     prevNode->val = elements[0];
     prevNode->next = nullptr;
@@ -74,8 +72,8 @@ LinkedList::LinkedList(E elements[], int len) {
 }
 
 // Copy constructor
-// template<typename E>
-LinkedList::LinkedList(const LinkedList &other) {
+template<typename E>
+LinkedList<E>::LinkedList(const LinkedList<E> &other) {
 	length   = other.length;
     curr_pos = nullptr;
 
@@ -99,8 +97,8 @@ LinkedList::LinkedList(const LinkedList &other) {
 }
 
 // Default destructor
-// template<typename E>
-LinkedList::~LinkedList() {
+template<typename E>
+LinkedList<E>::~LinkedList() {
     clear();
 }
 
@@ -116,8 +114,8 @@ LinkedList::~LinkedList() {
      * MISC: N/A
      **/
 
-// template<typename E>
-bool LinkedList::isEmpty() {
+template<typename E>
+bool LinkedList<E>::isEmpty() {
     if (length == 0) return true;
     return false;
 }
@@ -134,8 +132,8 @@ bool LinkedList::isEmpty() {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::clear() {
+template<typename E>
+void LinkedList<E>::clear() {
     if (length == 0) return;
     curr_pos = front;
     Node *next;
@@ -160,8 +158,8 @@ void LinkedList::clear() {
      * MISC: N/A
      **/
 
-// template<typename E>
-int LinkedList::size() {
+template<typename E>
+int LinkedList<E>::size() {
     return length;
 }
 
@@ -177,8 +175,8 @@ int LinkedList::size() {
      * MISC: N/A
      **/
 
-// template<typename E>
-E LinkedList::first() {
+template<typename E>
+E LinkedList<E>::first() {
     if (length == 0) throw runtime_error("cannot get first of empty list");
     return front->val;
 }
@@ -195,8 +193,8 @@ E LinkedList::first() {
      * MISC: N/A
      **/
 
-// template<typename E>
-E LinkedList::last() {
+template<typename E>
+E LinkedList<E>::last() {
     if (length == 0) throw runtime_error("cannot get last of empty list");
     return back->val;
 }
@@ -213,8 +211,8 @@ E LinkedList::last() {
      * MISC: N/A
      **/
 
-// template<typename E>
-E LinkedList::elementAt(int index) {
+template<typename E>
+E LinkedList<E>::elementAt(int index) {
 
     if (index < 0 || index >= length) {
         ostringstream e;
@@ -241,8 +239,8 @@ E LinkedList::elementAt(int index) {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::print() {   
+template<typename E>
+void LinkedList<E>::print() {   
     cout << "[LinkedList of size " << length << "<<";
     curr_pos = front;
     for (int i = 0; i < length; i++)
@@ -265,8 +263,8 @@ void LinkedList::print() {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::pushAtBack(E element) {
+template<typename E>
+void LinkedList<E>::pushAtBack(E element) {
     insertAt(element, length);
 }
 
@@ -282,8 +280,8 @@ void LinkedList::pushAtBack(E element) {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::pushAtFront(E element) {
+template<typename E>
+void LinkedList<E>::pushAtFront(E element) {
     insertAt(element, 0);
 }
 
@@ -299,8 +297,8 @@ void LinkedList::pushAtFront(E element) {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::insertAt(E element, int index) {
+template<typename E>
+void LinkedList<E>::insertAt(E element, int index) {
 
     if (index < 0 || index > length) {
         ostringstream e;
@@ -358,8 +356,8 @@ void LinkedList::insertAt(E element, int index) {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::insertInOrder(E element) {
+template<typename E>
+void LinkedList<E>::insertInOrder(E element) {
 
     int index = 0;
     curr_pos = front;
@@ -383,8 +381,8 @@ void LinkedList::insertInOrder(E element) {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::popFromFront() {
+template<typename E>
+void LinkedList<E>::popFromFront() {
     if (length == 0) throw runtime_error("cannot pop from empty list");
     removeAt(0);
 }
@@ -401,8 +399,8 @@ void LinkedList::popFromFront() {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::popFromBack() {
+template<typename E>
+void LinkedList<E>::popFromBack() {
     if (length == 0) throw runtime_error("cannot pop from empty list");
     removeAt(length - 1);
 }
@@ -419,8 +417,8 @@ void LinkedList::popFromBack() {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::removeAt(int index) {
+template<typename E>
+void LinkedList<E>::removeAt(int index) {
 
     if (index < 0 || index >= length) {
         ostringstream e;
@@ -472,8 +470,8 @@ void LinkedList::removeAt(int index) {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::replaceAt(E element, int index) {
+template<typename E>
+void LinkedList<E>::replaceAt(E element, int index) {
     
     if (index < 0 || index >= length) {
         ostringstream e;
@@ -500,8 +498,8 @@ void LinkedList::replaceAt(E element, int index) {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::concatenate(LinkedList *list2) {
+template<typename E>
+void LinkedList<E>::concatenate(LinkedList *list2) {
 
     for (int i = 0; i < list2->length; i++) {
         pushAtBack(list2->elementAt(i));
@@ -520,18 +518,18 @@ void LinkedList::concatenate(LinkedList *list2) {
      * MISC: N/A
      **/
 
-// template<typename E>
-void LinkedList::shrink() { }
+template<typename E>
+void LinkedList<E>::shrink() { }
 
-// template<typename E>
-bool LinkedList::find(E element) {
+template<typename E>
+bool LinkedList<E>::find(E element) {
     curr_pos = front;
     if (occurances(element, 0) != 0) return true;
     return false;
 }
 
-// template<typename E>
-int LinkedList::occurances(E element, int i) {
+template<typename E>
+int LinkedList<E>::occurances(E element, int i) {
     if (curr_pos->val == element) i++; 
     if (curr_pos->next != nullptr) {
         curr_pos = curr_pos->next;
@@ -541,5 +539,5 @@ int LinkedList::occurances(E element, int i) {
     }
 }
 
-// template class LinkedList<char>;
-// template class LinkedList<int>;
+template class LinkedList<char>;
+template class LinkedList<int>;
