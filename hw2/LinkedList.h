@@ -21,31 +21,36 @@ public:
 	LinkedList(E elements[], int len);
 	LinkedList(const LinkedList &other); // copy constructor
 	~LinkedList();
-	LinkedList &operator= (const LinkedList &rhs) { // assignment operator
-		length   = rhs.length;
-    curr_pos = nullptr;
+	LinkedList &operator=(const LinkedList &rhs)
+	{ // assignment operator
+		length = rhs.length;
+		curr_pos = nullptr;
 
-    if (this == &rhs)                   
-        return *this;
-    if (rhs.front == nullptr) {         
-        front = nullptr;
-        back = nullptr;
-    } else {                          
-        front = new Node;
-        front->val = rhs.front->val;
-        Node *curr = front;
-        Node *orig = rhs.front;
+		if (this == &rhs)
+			return *this;
+		if (rhs.front == nullptr)
+		{
+			front = nullptr;
+			back = nullptr;
+		}
+		else
+		{
+			front = new Node;
+			front->val = rhs.front->val;
+			Node *curr = front;
+			Node *orig = rhs.front;
 
-        while (orig->next != nullptr) { 
-            curr->next = new Node;
-            curr->next->val = orig->next->val;
-            orig = orig->next;
-            curr = curr->next;
-        }
-        back = curr;
-    }
+			while (orig->next != nullptr)
+			{
+				curr->next = new Node;
+				curr->next->val = orig->next->val;
+				orig = orig->next;
+				curr = curr->next;
+			}
+			back = curr;
+		}
 
-    return *this;
+		return *this;
 	}
 
 	// METHODS
@@ -59,7 +64,7 @@ public:
 	void pushAtBack(E element);
 	void pushAtFront(E element);
 	void insertAt(E element, int index);	// can throw range err
-	void insertInOrder(E element);					// assumes alphabetical order
+	void insertInOrder(E element);				// assumes alphabetical order
 	void popFromFront();									// runtime err on empty
 	void popFromBack();										// runtime err on empty
 	void removeAt(int index);							// can throw range err
@@ -69,8 +74,8 @@ public:
 	bool find(E element); // must be a recursive algo
 
 private:
-
-	struct Node {
+	struct Node
+	{
 		E val;
 		Node *prev;
 		Node *next;

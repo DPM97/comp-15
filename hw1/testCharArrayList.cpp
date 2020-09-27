@@ -521,6 +521,7 @@ void tCopyConstructor()
     cout << list2 << endl;
     cout << endl;
     delete list;
+    delete list2;
 }
 
 /**

@@ -194,8 +194,8 @@ void elementAt() {
     cout << "testing elementAt(1) on list..." << endl;
     cout << list.elementAt(1) << endl;
     try {
-        cout << "testing with index 40" << endl;
-        list.elementAt(40);
+        cout << "testing with index 3" << endl;
+        list.elementAt(3);
     } catch (range_error e) {
         cerr << e.what() << endl;
     }
@@ -282,8 +282,8 @@ void insertAt() {
     list.insertAt('r', 1);
     list.print();
     try {
-        cout << "testing with index 40" << endl;
-        list.insertAt('r', 40);
+        cout << "testing with index 5" << endl;
+        list.insertAt('r', 5);
     } catch (range_error e) {
         cerr << e.what() << endl;
     }
@@ -386,8 +386,8 @@ void removeAt() {
     list.removeAt(1);
     list.print();
     try {
-        cout << "testing with index 40" << endl;
-        list.removeAt(40);
+        cout << "testing with index 2" << endl;
+        list.removeAt(2);
     } catch (range_error e) {
         cerr << e.what() << endl;
     }
@@ -414,8 +414,8 @@ void replaceAt() {
     list.replaceAt('v', 1);
     list.print();
     try {
-        cout << "testing with index 40" << endl;
-        list.replaceAt('v', 40);
+        cout << "testing with index 3" << endl;
+        list.replaceAt('v', 3);
     } catch (range_error e) {
         cerr << e.what() << endl;
     }

@@ -6,10 +6,16 @@ Purpose: What does the program do?
 
   The purpose of this homework was to write c class and the supporting methods
   to manipulate "node" structs to create a "linked list". Using these methods, 
-  it will be able to chain together said nodes and be able to create a list similar
-  in function to that of an array.
+  it will be able to chain together said nodes and be able to create a data
+  structure similar in functionality to that of an arraylist.
 
 Acknowledgements: Help that I recieved.
+
+  For this assignment I referenced the files that supported template
+  integration, the assignment operator / copy constructor helper files, aswell
+  as the lecture for basic information regarding doubly-linked lists. These
+  sources have been cited below.
+
 
   Template reference: 
     https://www.cs.tufts.edu/comp/15/reference/templates/index.shtml
@@ -20,12 +26,22 @@ Acknowledgements: Help that I recieved.
 
 
 Files：Files used.
-  LinkedList.cpp - template / class which has all of the linked list functionality.
   LinkedList.h - header file for the LinkedList class
-  testLinkedList.cpp - testing file for the linked list (tests every method)
+
+  LinkedList.cpp - template / class which has all of the linked list 
+    functionality. Includes four constructors, an assignment operator,
+    a destructor, and 20 public methods. In addition, the class includes
+    a Node struct and a few private variables/methods to help facilitate
+    the public methods.
+
+  testLinkedList.cpp - testing file for the linked list. Includes a main 
+  method which calls all tests in addition to a method to test every public
+  method in the LinkedList class. These tests include edge cases and error
+  cases.
 
 
 Compile Instructions: How to run the program.
+
   All build commands are consolodated in the makefile.
   1. make
   2. ./cheshire 
@@ -33,20 +49,26 @@ Compile Instructions: How to run the program.
     valgrind -v ./cheshire
 
   Compiling without makefile:
-    1. clang++ -g3 -Wall -Wextra -std=c++11 -c -o CharArrayList.o CharArrayList.cpp
-    2. clang++ -g3 -Wall -Wextra -std=c++11 -c -o testCharArrayList.o testCharArrayList.cpp
+    1. clang++ -g3 -Wall -Wextra -std=c++11 -c -o CharArrayList.o 
+        CharArrayList.cpp
+    2. clang++ -g3 -Wall -Wextra -std=c++11 -c -o testCharArrayList.o 
+        testCharArrayList.cpp
     3. clang++ -g3 -o main CharArrayList.o testCharArrayList.o
     4. ./main
+
+  To include the linkedlist in your own program, you can include the header file
+  and create a new linkedlist by typing "LinkedList<ElemType> list()";
 
 Usage: Why is this useful?
 
   Assuming comparison to a normal array or a dynamic arraylist, there are a few
   reasons why the linked list might be useful. Firstly, the linkedlist is always
-  the correct size. Furthermore, the ability to change the pointers of nodes allows
-  the addition of new nodes and deletion of existing nodes to be much less intensive. 
-  To do this, you can just change the next and prev pointers on the nodes on either
-  side of the index you are trying to insert (or delete) at. A possible downside, however,
-  is the amount of space that a node (also the entire list) takes up.
+  the correct size. Furthermore, the ability to change the pointers of nodes 
+  allows the addition of new nodes and deletion of existing nodes to be much 
+  less intensive. To do this, you can just change the next and prev pointers on
+  the nodes on either side of the index you are trying to insert (or delete) at. 
+  A possible downside, however, is the amount of space that a node 
+  (also the entire list) takes up.
 
 Testing: How the implementation was tested.
 
@@ -66,4 +88,24 @@ Testing: How the implementation was tested.
     5. if applicable, test an error-throwing case & catch/print the error
 
 
-  
+Q1: Which functions in the interface were easier to implmement for linked lists 
+    compared to array lists? Why?
+
+    Adding elements was more simple alltogether because the linked-list 
+    implementation doesn't require checking to re-size the list.
+
+Q2: Which functions in the interface were harder to implmement for linked lists 
+    compared to array lists? Why?
+
+    I think the clear method was harder than the array list implementation 
+    because you would need to keep track of the pointers while looping backwards
+    and deleting nodes - whereas the array list you could just delete the 
+    existing array and replace it with a new, empty one.
+
+Q3: If a client had an existing program that uses CharArrayLists, what changes 
+    would they have to make to their code to switch to LinkedLists?
+
+    There shouldn't be a need to change anything other than the linkedlist
+    implementation being a template. Other than changing the creation of lists
+    to support this template, all of the inputs are identical to the arraylist
+    spec.

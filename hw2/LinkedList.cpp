@@ -237,7 +237,7 @@ E LinkedList<E>::elementAt(int index)
     if (index < 0 || index >= length)
     {
         ostringstream e;
-        e << "index " << index << " not in range [0.." << length << "]";
+        e << "index " << index << " not in range [0.." << length << ")";
         throw range_error(e.str());
     }
 
@@ -315,7 +315,8 @@ void LinkedList<E>::pushAtFront(E element)
      * 
      * PURPOSE: inserts element at index
      *  
-     * PARAMETERS: E element (element being inserted), int index (index of insertion)
+     * PARAMETERS: E element (element being inserted), int index 
+     *             (index of insertion)
      * 
      * RETURN: void
      * 
@@ -333,12 +334,6 @@ void LinkedList<E>::insertAt(E element, int index)
         throw range_error(e.str());
     }
 
-    curr_pos = front;
-    for (int i = 0; i < index; i++)
-    {
-        curr_pos = curr_pos->next;
-    }
-
     Node *newNode = new Node;
     newNode->val = element;
 
@@ -349,30 +344,32 @@ void LinkedList<E>::insertAt(E element, int index)
         return;
     }
 
+    curr_pos = front;
+    for (int i = 0; i < index; i++)
+    {
+        curr_pos = curr_pos->next;
+    }
+
     if (index == 0)
     {
         front->prev = newNode;
         newNode->next = front;
         front = newNode;
-        length++;
-        return;
     }
     else if (index == length)
     {
         back->next = newNode;
         newNode->prev = back;
         back = newNode;
-        length++;
-        return;
     }
-
-    Node *last = curr_pos->prev;
-
-    newNode->prev = last;
-    last->next = newNode;
-    newNode->next = curr_pos;
-    curr_pos->prev = newNode;
-
+    else
+    {
+        Node *last = curr_pos->prev;
+        newNode->prev = last;
+        last->next = newNode;
+        newNode->next = curr_pos;
+        curr_pos->prev = newNode;
+    }
     length++;
 }
 
@@ -462,7 +459,7 @@ void LinkedList<E>::removeAt(int index)
     if (index < 0 || index >= length)
     {
         ostringstream e;
-        e << "index " << index << " not in range [0.." << length << "]";
+        e << "index " << index << " not in range [0.." << length << ")";
         throw range_error(e.str());
     }
 
@@ -521,7 +518,7 @@ void LinkedList<E>::replaceAt(E element, int index)
     if (index < 0 || index >= length)
     {
         ostringstream e;
-        e << "index " << index << " not in range [0.." << length << "]";
+        e << "index " << index << " not in range [0.." << length << ")";
         throw range_error(e.str());
     }
 
@@ -568,7 +565,7 @@ void LinkedList<E>::concatenate(LinkedList *list2)
      **/
 
 template <typename E>
-void LinkedList<E>::shrink() {}
+void LinkedList<E>::shrink() { return; }
 
 template <typename E>
 bool LinkedList<E>::find(E element)
