@@ -545,8 +545,9 @@ void LinkedList<E>::replaceAt(E element, int index)
 template <typename E>
 void LinkedList<E>::concatenate(LinkedList *list2)
 {
+    int size = list2->size();
 
-    for (int i = 0; i < list2->length; i++)
+    for (int i = 0; i < size; i++)
     {
         pushAtBack(list2->elementAt(i));
     }
