@@ -9,13 +9,6 @@
  *           On: Sep 23 2020
  */
 
-//
-// NOTE:  Do a "monomorphic" implementation for char LinkedLists
-// first, then turn all the functions into template functions.
-//
-// DO NOT FORGET TO UNCOMMENT THE LAST TWO LINES IN THIS FILE WHEN YOU
-// MAKE YOUR TEMPLATES!
-//
 
 #include "LinkedList.h"
 #include "sstream"
@@ -339,7 +332,7 @@ void LinkedList<E>::insertAt(E element, int index)
 
     if (length == 0)
     {
-        front = back = newNode;
+        curr_pos = front = back = newNode;
         length++;
         return;
     }

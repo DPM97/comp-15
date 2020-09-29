@@ -18,11 +18,13 @@ Acknowledgements: Help that I recieved.
 
 
   Template reference: 
-    https://www.cs.tufts.edu/comp/15/reference/templates/index.shtml
+  https://www.cs.tufts.edu/comp/15/reference/templates/index.shtml
+
   Linked list reference: 
-    Lecture
+  Lecture
+  
   Assignment Operator / Copy Constructor: 
-    https://www.cs.tufts.edu/comp/15/notes/big_three/copy_and_assignment_fixed.cpp
+  https://www.cs.tufts.edu/comp/15/notes/big_three/copy_and_assignment_fixed.cpp
 
 
 Files：Files used.
@@ -68,7 +70,8 @@ Usage: Why is this useful?
   less intensive. To do this, you can just change the next and prev pointers on
   the nodes on either side of the index you are trying to insert (or delete) at. 
   A possible downside, however, is the amount of space that a node 
-  (also the entire list) takes up.
+  (also the entire list) takes up. In addition, the indexing times for a linked-
+  list will be much longer because you have to iterate through the nodes.
 
 Testing: How the implementation was tested.
 
@@ -80,11 +83,13 @@ Testing: How the implementation was tested.
   cases in testLinkedList.cpp are implemented using chars, however, I have 
   tested them using integers successfully.
 
-  Below is the basic testing protocol for all methods within the LinkedList class:
+  Below is the basic testing protocol for all methods within the LinkedList 
+  class:
     1. print the linked list before manipulation
     2. print the type of manipulation that is going to occur
     3. call the method that is being tested
-    4. print the manipulated linked list (or variable that changed if not the list)
+    4. print the manipulated linked list (or variable that changed if not the 
+    list)
     5. if applicable, test an error-throwing case & catch/print the error
 
 

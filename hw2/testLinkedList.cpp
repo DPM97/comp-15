@@ -459,8 +459,8 @@ void concatenate() {
 
 void find() {
     LinkedList<E> list(new char[3]{'a', 'b', 'c'}, 3);
-    cout << "finding a in a --> b --> c" << endl;
-    cout << boolalpha << list.find('a') << endl;
+    cout << "finding c in a --> b --> c" << endl;
+    cout << boolalpha << list.find('c') << endl;
     cout << "finding r in a --> b --> c" << endl;
     cout << boolalpha << list.find('r') << endl;
     cout << endl;
