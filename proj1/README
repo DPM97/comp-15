@@ -1,0 +1,32 @@
+    A. Comp 15
+       Project 1 - phase 1
+       Dylan Maloy
+
+    B. Purpose:
+         - Implement a DatumStack and the parseRString method
+
+    C. Acknowledgements:
+         - How to create an istream from a string (for testing)
+         - https://stackoverflow.com/questions/499381/optimal-way-to-get-
+         a-string-or-char-into-an-istream
+    
+    D. Files:
+         - DatumStack.h: header file for the DatumStack class
+         - DatumStack.cpp: class that implements a stack for Datum elements
+
+         - parser.h: header file for parser.cpp
+         - parser.cpp: cpp file which includes the parseRString method
+
+         - testDatumStack.cpp: file to run tests on the stack & parseRString
+
+    E. How to Run:
+         - make Part1 (make sure Datum.o is in the project folder)
+         - ./Part1 or valgrind ./Part1
+    
+    F. Data Structures used:
+         - A stack was used to house the Datum objects. 
+         
+    G. Testing: 
+         - Testing was done in the testDatumStack.cpp file. It tests all 
+         parts of the DatumStack class as well as the parseRString method
+         that will be in the RPNCalc class in the second phase of the project.
