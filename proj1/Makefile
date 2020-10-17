@@ -19,7 +19,7 @@ EXECS    = CalcYouLater
 CalcYouLater: main.o RPNCalc.o DatumStack.o Datum.o
 	${CXX} ${LDFLAGS} $^ -o $@
 
-Testing: mainTesting.o RPNCalc.o DatumStack.o Datum.o testing.o
+Testing: mainTesting.o testing.o RPNCalc.o DatumStack.o Datum.o 
 	${CXX} ${LDFLAGS} $^ -o $@
 
 %.o: %.cpp ${INCLUDES}

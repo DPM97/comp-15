@@ -40,6 +40,14 @@ class testing {
     void isInt();
     void pushBool();
     void invertBool();
+    void clearStack();
+    void drop();
+    void duplicate();
+    void swap();
+    void operateOn();
+    void compareTo();
+    void exec();
+    void execIf();
     void parseRString();
 };
 

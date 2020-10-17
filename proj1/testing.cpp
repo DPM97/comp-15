@@ -45,6 +45,14 @@ void testing::main()
   isInt();
   pushBool();
   invertBool();
+  clearStack();
+  drop();
+  duplicate();
+  swap();
+  operateOn();
+  compareTo();
+  exec();
+  execIf();
   parseRString();
 }
 
@@ -212,20 +220,165 @@ void testing::invertBool() {
   cout << endl;
 }
 
+/**
+ * FUNCTION: clearStack
+ * PURPOSE: tests clearStack method
+ * PARAMETERS: N/A
+ * RETURN: N/A
+ * MISC: N/A
+ **/
 
+void testing::clearStack() {
+  RPNCalc calc;
+  calc.pushBool("#f");
+  calc.pushBool("#t");
+  cout << "Clearing stack of size " << calc.stack->size() << endl;
+  calc.clearStack();
+  cout << "Stack size: " << calc.stack->size() << endl;
+  cout << endl;
+}
+
+/**
+ * FUNCTION: drop
+ * PURPOSE: tests drop method
+ * PARAMETERS: N/A
+ * RETURN: N/A
+ * MISC: N/A
+ **/
+
+void testing::drop() {
+  RPNCalc calc;
+  calc.pushBool("#f");
+  calc.pushBool("#t");
+  print(*calc.stack);
+  cout << "Dropping top element" << endl;
+  calc.drop();
+  print(*calc.stack);
+  cout << endl;
+}
+
+/**
+ * FUNCTION: duplicate
+ * PURPOSE: tests duplicate method
+ * PARAMETERS: N/A
+ * RETURN: N/A
+ * MISC: N/A
+ **/
+
+void testing::duplicate() {
+  RPNCalc calc;
+  calc.pushBool("#f");
+  print(*calc.stack);
+  cout << "Duplicating top element" << endl;
+  calc.duplicate();
+  print(*calc.stack);
+  calc.clearStack();
+  cout << "Testing on empty stack" << endl;
+  calc.duplicate();
+  cout << endl;
+}
+
+/**
+ * FUNCTION: swap
+ * PURPOSE: tests swap method
+ * PARAMETERS: N/A
+ * RETURN: N/A
+ * MISC: N/A
+ **/
+
+void testing::swap() {
+  RPNCalc calc;
+  calc.pushBool("#f");
+  calc.pushBool("#t");
+  print(*calc.stack);
+  cout << "Swapping top element" << endl;
+  calc.swap();
+  print(*calc.stack);
+  calc.clearStack();
+  cout << "Testing on empty stack" << endl;
+  calc.swap();
+  cout << endl;
+}
+
+/**
+ * FUNCTION: operateOn
+ * PURPOSE: tests operateOn method
+ * PARAMETERS: N/A
+ * RETURN: N/A
+ * MISC: N/A
+ **/
+
+void testing::operateOn() {
+  RPNCalc calc;
+  cout << "Testing 4+2, 4-2, 4*2, 4/2, 4mod2" << endl;
+  string str = "{ testOperate.cylc } file";
+  istringstream test(str);
+  calc.parseInput(test);
+  cout << endl;
+}
+
+/**
+ * FUNCTION: compareTo
+ * PURPOSE: tests compareTo method
+ * PARAMETERS: N/A
+ * RETURN: N/A
+ * MISC: N/A
+ **/
+
+void testing::compareTo() {
+  RPNCalc calc;
+  cout << "Testing 4<2, 4>2, 4<=3, 4>=3, 3==3, 4==3" << endl;
+  string str = "{ testCompare.cylc } file";
+  istringstream test(str);
+  calc.parseInput(test);
+  cout << endl;
+}
+
+/**
+ * FUNCTION: exec
+ * PURPOSE: tests exec method
+ * PARAMETERS: N/A
+ * RETURN: N/A
+ * MISC: N/A
+ **/
+
+void testing::exec() {
+  RPNCalc calc;
+  cout << "Testing exec: { 4 2 + } exec quit" << endl;
+  string str = "{ 4 2 + } exec print quit";
+  istringstream test(str);
+  calc.parseInput(test);
+  cout << endl;
+}
+
+/**
+ * FUNCTION: execIf
+ * PURPOSE: tests execIf method
+ * PARAMETERS: N/A
+ * RETURN: N/A
+ * MISC: N/A
+ **/
+
+void testing::execIf() {
+  RPNCalc calc;
+  cout << "Testing execIf: #f { 4 2 + } { 4 2 - } if print quit" << endl;
+  string str = "#f { 4 2 + } { 4 2 - } if print quit";
+  istringstream test(str);
+  calc.parseInput(test);
+  cout << endl;
+}
 
 /**
  * FUNCTION: parseRString
  * PURPOSE: tests the parseRString method
  * PARAMETERS: N/A
- * RETURN: N/A
+ * RETURN: N/A 
  * MISC: N/A
  **/
 
 void testing::parseRString()
 {
   RPNCalc calc;
-  string i;
   string str = " 1 { 4 2 / } / } swap #f";
   istringstream test(str);
   cout << "Testing parseRString on  1 { 4 2 / } / } swap #f..." << endl;

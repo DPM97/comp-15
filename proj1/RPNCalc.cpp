@@ -42,23 +42,6 @@ RPNCalc::~RPNCalc()
 void RPNCalc::run()
 {
   parseInput(cin);
-  cout << stack->top().toString() << endl;
-  quit();
-}
-
-/**
- * FUNCTION: quit
- * PURPOSE: quits the program & prints quit message
- * PARAMETERS: N/A
- * RETURN: void
- * MISC: N/A
- **/
-
-void RPNCalc::quit()
-{
-  cerr << "Thank you for using CalcYouLater." << endl;
-  printTop();
-  exit(0);
 }
 
 /**
@@ -80,6 +63,11 @@ void RPNCalc::parseInput(istream &in)
       string rs = parseRString(in);
       stack->push(Datum(rs));
     }
+    else if (i == "quit")
+    {
+      cerr << "Thank you for using CalcYouLater." << endl;
+      return;
+    }
     else
     {
       chooseCommand(i);
@@ -97,11 +85,11 @@ void RPNCalc::parseInput(istream &in)
 
 void RPNCalc::chooseCommand(string command)
 {
-  if (isInt(command) == true) 
+  if (isInt(command) == true)
   {
     stack->push(Datum(stoi(command)));
   }
-  else if  (command == "#t" or command == "#f")
+  else if (command == "#t" or command == "#f")
   {
     pushBool(command);
   }
@@ -129,10 +117,6 @@ void RPNCalc::chooseCommand(string command)
   {
     swap();
   }
-  else if (command == "quit")
-  {
-    quit();
-  }
   else if (command == "+" or command == "-" or command == "*" or command == "/" or command == "mod")
   {
     operateOn(command);
@@ -155,8 +139,10 @@ void RPNCalc::chooseCommand(string command)
  * MISC: N/A
  **/
 
-bool RPNCalc::isInt(string integer) {
-  if (integer[0] == '0') return true;
+bool RPNCalc::isInt(string integer)
+{
+  if (integer[0] == '0')
+    return true;
   return (atoi(integer.c_str()));
 }
 
@@ -445,7 +431,7 @@ string RPNCalc::parseRString(istream &in)
     rstring = rstring + " " + object;
     object = "";
   }
- 
+
   return rstring;
 }
 
@@ -549,29 +535,35 @@ void RPNCalc::execIf()
   try
   {
     Datum falseCase = stack->top();
-    if (!falseCase.isRString()) {
+    if (!falseCase.isRString())
+    {
       cerr << "Error: expected rstring in if branch" << endl;
       return;
     }
     stack->pop();
 
     Datum trueCase = stack->top();
-    if (!trueCase.isRString()) {
+    if (!trueCase.isRString())
+    {
       cerr << "Error: expected rstring in if branch" << endl;
       return;
     }
     stack->pop();
 
     Datum condition = stack->top();
-    if (!condition.isBool()) {
+    if (!condition.isBool())
+    {
       cerr << "Error: expected boolean in if test" << endl;
       return;
     }
     stack->pop();
 
-    if (condition.getBool() == false) {
+    if (condition.getBool() == false)
+    {
       stack->push(falseCase);
-    } else {
+    }
+    else
+    {
       stack->push(trueCase);
     }
 

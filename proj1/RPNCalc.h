@@ -52,7 +52,7 @@ class RPNCalc{
                                              // figures out what it is
     void chooseComplexCmd(std::string command); // chooses func from complex 
                                                 // cmd's                            
-    bool isInt(std::string integer); // checks if string is int
+    bool isInt(std::string s); // checks if string is int
     DatumStack *stack;
 };
 
