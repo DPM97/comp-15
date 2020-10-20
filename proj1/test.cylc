@@ -1,5 +1,5 @@
-9
-{ fib.cylc } 
+15
+{ n_fibs.cylc } 
 file
 print
 quit

@@ -461,18 +461,19 @@ void RPNCalc::exec()
       string topElemStr = topElem.toString();
 
       /* remove curley braces and spaces from rString */
-      if (topElemStr.size() > 3) { // dont allow empty rstring
+      if (topElemStr.size() <= 3) return; // empty rString
+
         topElemStr.erase(0, 2);
         topElemStr.pop_back();
         topElemStr.pop_back();
         istringstream rString(topElemStr);
         parseInput(rString);
-      }
+      
     }
   }
   catch (exception &e)
   {
-    cerr << e.what() << endl;
+    cerr << "Error: " << e.what() << endl;
   }
 }
 
@@ -500,6 +501,8 @@ void RPNCalc::file()
       string topElemStr = topElem.toString();
 
       /* remove curley braces and spaces from rString */
+      if (topElemStr.size() <= 3) return; // empty rString
+
       topElemStr.erase(0, 2);
       topElemStr.pop_back();
       topElemStr.pop_back();
@@ -519,7 +522,7 @@ void RPNCalc::file()
   }
   catch (exception &e)
   {
-    cerr << e.what() << endl;
+    cerr << "Error: " << e.what() << endl;
   }
 }
 
@@ -571,6 +574,6 @@ void RPNCalc::execIf()
   }
   catch (exception &e)
   {
-    cerr << e.what() << endl;
+    cerr << "Error: " << e.what() << endl;
   }
 }
