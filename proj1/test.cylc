@@ -1,3 +1,5 @@
-4 
-{ fact.cylc } 
+9
+{ fib.cylc } 
 file
+print
+quit

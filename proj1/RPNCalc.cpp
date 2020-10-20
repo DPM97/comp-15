@@ -117,11 +117,13 @@ void RPNCalc::chooseCommand(string command)
   {
     swap();
   }
-  else if (command == "+" or command == "-" or command == "*" or command == "/" or command == "mod")
+  else if (command == "+" or command == "-" or command == "*" or
+           command == "/" or command == "mod")
   {
     operateOn(command);
   }
-  else if (command == "<" or command == ">" or command == "<=" or command == ">=" or command == "==")
+  else if (command == "<" or command == ">" or command == "<=" or
+           command == ">=" or command == "==")
   {
     compareTo(command);
   }
@@ -213,7 +215,7 @@ void RPNCalc::invertBool()
       stack->push(Datum(false));
     }
   }
-  catch (exception e)
+  catch (exception &e)
   {
     cerr << "Error: " << e.what() << endl;
   }
@@ -233,7 +235,7 @@ void RPNCalc::printTop()
   {
     cout << stack->top().toString() << endl;
   }
-  catch (exception e)
+  catch (exception &e)
   {
     cerr << "Error: " << e.what() << endl;
   }
@@ -266,7 +268,7 @@ void RPNCalc::drop()
   {
     stack->pop();
   }
-  catch (exception e)
+  catch (exception &e)
   {
     cerr << "Error: " << e.what() << endl;
   }
@@ -278,7 +280,7 @@ void RPNCalc::duplicate()
   {
     stack->push(stack->top());
   }
-  catch (exception e)
+  catch (exception &e)
   {
     cerr << "Error: " << e.what() << endl;
   }
@@ -304,7 +306,7 @@ void RPNCalc::swap()
     stack->push(first);
     stack->push(second);
   }
-  catch (exception e)
+  catch (exception &e)
   {
     cerr << "Error: " << e.what() << endl;
   }
@@ -349,7 +351,7 @@ void RPNCalc::operateOn(string command)
       stack->push(Datum(second.getInt() % first.getInt()));
     }
   }
-  catch (exception e)
+  catch (exception &e)
   {
     cerr << "Error: " << e.what() << endl;
   }
@@ -394,7 +396,7 @@ void RPNCalc::compareTo(string command)
       stack->push(Datum(second.getInt() == first.getInt()));
     }
   }
-  catch (exception e)
+  catch (exception &e)
   {
     cerr << "Error: " << e.what() << endl;
   }
@@ -447,12 +449,10 @@ void RPNCalc::exec()
 {
   try
   {
-
     Datum topElem = stack->top();
     if (topElem.isRString() == false)
     {
       cerr << "Error: cannot execute non rstring" << endl;
-      return;
     }
     else
     {
@@ -461,17 +461,18 @@ void RPNCalc::exec()
       string topElemStr = topElem.toString();
 
       /* remove curley braces and spaces from rString */
-      topElemStr.erase(0, 2);
-      topElemStr.pop_back();
-      topElemStr.pop_back();
-
-      istringstream rString(topElemStr);
-      parseInput(rString);
+      if (topElemStr.size() > 3) { // dont allow empty rstring
+        topElemStr.erase(0, 2);
+        topElemStr.pop_back();
+        topElemStr.pop_back();
+        istringstream rString(topElemStr);
+        parseInput(rString);
+      }
     }
   }
-  catch (exception e)
+  catch (exception &e)
   {
-    cerr << "Error: " << e.what() << endl;
+    cerr << e.what() << endl;
   }
 }
 
@@ -516,9 +517,9 @@ void RPNCalc::file()
       }
     }
   }
-  catch (exception e)
+  catch (exception &e)
   {
-    cerr << "Error: " << e.what() << endl;
+    cerr << e.what() << endl;
   }
 }
 
@@ -566,12 +567,10 @@ void RPNCalc::execIf()
     {
       stack->push(trueCase);
     }
-
     exec();
   }
-  catch (exception e)
+  catch (exception &e)
   {
-    cerr << "Error: " << e.what() << endl;
-    return;
+    cerr << e.what() << endl;
   }
 }

@@ -3,30 +3,71 @@
        Dylan Maloy
 
     B. Purpose:
-         - Implement a DatumStack and the parseRString method
+         - The purpose of this program was to implement an RPN Calculator based
+         on a stack data structure. This includes the creation of many functions
+         which would allow for the execution of commands either from the cin, 
+         or from a file.
 
     C. Acknowledgements:
          - How to create an istream from a string (for testing)
          - https://stackoverflow.com/questions/499381/optimal-way-to-get-
-         a-string-or-char-into-an-istream
+           a-string-or-char-into-an-istream
+         - How to check if a string is an integer
+         - https://stackoverflow.com/questions/4654636/how-to-determine-
+           if-a-string-is-a-number-with-c
+         - Basic stack knowledge
+           Lecture
     
     D. Files:
          - DatumStack.h: header file for the DatumStack class
-         - DatumStack.cpp: class that implements a stack for Datum elements
+         - DatumStack.cpp: class that implements a stack for Datum elements.
+           The DatumStack is made on top of a vector, and utilizes the vector
+           functions to create a stack.
 
-         - parser.h: header file for parser.cpp
-         - parser.cpp: cpp file which includes the parseRString method
+         - RPNCalc.h: header file for the RPNCalc class
+         - RPNCalc.cpp: class that implements the RPNCalc / has all of the
+           functions that parse the input. The main methods that make the 
+           decisions are chooseCommand and parseInput. These methods parse the
+           incoming stream & excecute the correct methods which make changes to
+           the stack (thereby solving the problem).
 
-         - testDatumStack.cpp: file to run tests on the stack & parseRString
+         - testing.h: header file for the testing class
+         - testing.cpp: class that implements all of the tests for the program.
+           It contains many methods, which when combined test every aspect of
+           the RPNCalculator with various inputs and edge cases included. 
+
+         - mainTesting.cpp: file that creates an instance of testing and runs it
+         - main.cpp: file that creates an RPNCalc instance and runs it
+
+         Below are some of the files I used to test more complex commands.
+         - testOperate.cylc
+         - testCompare.cylc
 
     E. How to Run:
-         - make Part1 (make sure Datum.o is in the project folder)
-         - ./Part1 or valgrind ./Part1
+          Testing:
+               - make Testing
+               - ./Testing 
+
+          CalcYouLater:
+               - make CalcYouLater
+               - ./CalcYouLater
     
     F. Data Structures used:
-         - A stack was used to house the Datum objects. 
+         - A stack was used to house the Datum objects. This was described
+         above in more detail inside of the DatumStack file description.
          
     G. Testing: 
-         - Testing was done in the testDatumStack.cpp file. It tests all 
-         parts of the DatumStack class as well as the parseRString method
-         that will be in the RPNCalc class in the second phase of the project.
+         - I decided that it was best to keep my testing inside of a main class.
+         This class is called testing.cpp. When ran, there are various functions
+         that run calculations / various inputs on RPNCalc instances and record
+         the output. These cases include various edge cases / instances where
+         the program should throw an error / exception. For the more complex
+         testing functions in the class, I would parse a "file" and then
+         executed it. These files were testOperate.cylc and testCompare.cylc. 
+         This ended up being much easier to implement than making these changes
+         to the stack manually. 
+
+         Protocol:
+          - To run the testing protocol reference the "How to Run" section
+          above. When running the executable, there will be an output string
+          where you can view all of the tests and thier outcomes.
