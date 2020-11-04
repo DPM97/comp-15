@@ -1,0 +1,87 @@
+Comp 15
+HW4
+Dylan Maloy
+
+Purpose: 
+    The purpose of the assignment is to populate a BinarySearchTree class 
+    with methods so that the tree functions properly. Most of the methods that
+    were populated were recursive, and gave the tree the ability to add nodes,
+    remove nodes, as well as many other helper functions / functions that 
+    provided important tree metrics (# of nodes, etc.)
+
+Acknowledgements:
+    Basic Tree Knowledge
+        - Lecture & previous knowledge on trees
+
+Time spent:
+    Maybe a few hours to write the initial functions + an hour or so 
+    to write this README and clean up styling / break down functions into
+    ones that are sub-30 lines. Total of 3-4 hours.
+
+Files:
+    Makefile:
+        - pre-provided Makefile that facilitates the compilation of the program
+
+    BinarySearchTree.h:
+        - Header file for the BinarySearchTree class. Contains all of the 
+        function declarations & basic comments about function definitions
+
+    BinarySearchTree.cpp:
+        - File that implements all of the tree's functionality. This
+          functionality is explained in more depth in the file heading itself
+          and the purpose above, however, the file in short contains all of the
+          methods a BST may want to have. Functionality like insert, remove, 
+          counting nodes, fetching the sum of all nodes in the tree, etc. are
+          all implemented in this file. 
+
+Compilation:
+  make hw4
+  ./hw4
+
+Testing: 
+    Ideology: 
+        - To test my program I decided to make a "Testing" class in addition 
+          to the "hw4" implementation included in the starter-code. In this
+          testing class I created a function for each of the main driver methods
+          and tested all of the edge cases that I could come up with. Some of
+          which included adding/removing elements with more than one count, 
+          removing roots, removing leaves, removing internal nodes, etc. These
+          tests ended up helping me find a few bugs in my code where I didn't
+          account for certain cases - mostly in the remove function. In addition
+          to running my own testing protocol, I used the "diff" command to
+          compare the output of ./the_hw4 to the output of ./hw4 to make sure 
+          that there were no differences in the output of the 
+          instructor-provided executable and mine.
+
+    Protocol:
+        - make testing
+        - ./testing
+
+Questions:
+    - Q1: I ended up not using the find_min and find_max functions. The find_min
+          method could have been used in my case to find the best successor on 
+          the right side of the node, however, in order to have my algorithm 
+          function correctly I needed the parent node to be updated as-well.
+          This is the main reason I didn't end up using this private method in
+          my implementation.
+    - Q2: If a nullptr is passed into either of the functions then it will 
+          return this nullptr. In all other cases, it will return either the
+          smallest or greatest nodes in the tree.
+    - Q3: The nullptr will be returned if the nullptr is passed into the method.
+          This could happen if the function is called when the root is a nullptr
+          / the tree is empty. In the case provided in (b), the method would
+          return nullptr because the nullptr is being passed into the function.
+    - Q4: 
+            find_min(Node node);
+                while (node->left) node = node->left;
+                return node;
+    - Q5:
+            find_max(Node node);
+                while (node->right) node = node->right;
+                return node;
+    - Q6:   
+            burn_tree(Node node);
+                if (node == nullptr) return;
+                burn_tree(node->left);
+                burn_tree(node->right);
+                delete node;

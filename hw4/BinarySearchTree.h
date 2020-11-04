@@ -14,6 +14,9 @@
 
 
 class BinarySearchTree {
+        
+friend class Testing;
+
 public:
         // constructor
         BinarySearchTree();
@@ -107,6 +110,8 @@ private:
         //  remove(Node *node, Node **ptr_to_ptr_to_me, int value);
 
         Node *createNode(Node *node, int value);
+        void swapSuccessor(Node *node, Node *parent);
+        void clone_node(Node *node1, Node *node2);
 
         int   tree_height(Node *node) const;
         int   node_count(Node *node) const;

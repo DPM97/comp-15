@@ -11,6 +11,9 @@ CXXFLAGS = -g3 -Wall -Wextra -std=c++11
 hw4: hw4.o BinarySearchTree.o
 	${CXX} -o $@ $^
 
+testing: mainTesting.o testing.o BinarySearchTree.o
+	${CXX} -o $@ $^
+
 %.o: %.cpp $(shell echo *.h)
 	${CXX} ${CXXFLAGS} -c $<
 
