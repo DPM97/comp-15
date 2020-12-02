@@ -1,0 +1,18 @@
+bfs
+Jay-Z
+Post Malone
+dfs
+Jay-Z
+Ariana Grande
+bfs
+Avril Lavigne
+Post Malone
+not
+Jay-Z
+Post Malone
+Nicki Minaj
+Beyonce
+*
+invalidcmd
+anotherinvalidcmd
+quit

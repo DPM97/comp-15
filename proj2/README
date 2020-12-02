@@ -1,0 +1,122 @@
+Title:          Project 2:  Six Degrees of Collaboration
+Author:         Dylan Maloy
+Time invested:  9 hours give or take
+----------------------------------------------------------------------
+
+Purpose:
+    The purpose of this program is to create an implementation of the "Six
+    Degrees of Kevin Bacon" game using Artists and their songs. Esentially, 
+    it takes in a set of commands and algorithms to traverse the graph and 
+    outputs a visualization of the connection between two artists & how they 
+    are connected via their respective discographies. 
+
+
+Acknowledgements:
+    Basic algorithm / graph knowledge:
+        - Lecture + prior knowledge
+    Routing output to file:
+        - https://www.tutorialspoint.com/c_standard_library/
+          c_function_freopen.htm
+
+Files:
+    name            purpose
+    ----            -------
+    Artist.cpp      Artist class.
+
+    Artist.h        Artist header file.
+
+    CollabGraph.cpp Collab graph class.
+
+    CollabGraph.h   Collab graph header file.
+    
+
+    SixDegrees.cpp  SixDegrees class - generates graph from input & runs 
+                    algorithms.
+
+    SixDegrees.h    SixDegrees header file.
+
+    main.cpp        main file that takes params from the cmd line, creates
+                    an instance of the SixDegrees class & runs it.
+
+    mainTesting.cpp main testing file that includes the int main function and
+                    creates and runs an instance of the Testing class.
+
+    Testing.cpp     Testing class - includes methods to test all program 
+                    functionality and edge cases.
+
+    Testing.h       Testing header file.
+
+How to build and run program:
+    
+    SixDegrees:
+        make SixDegrees
+        ./SixDegrees dataFile [commandFile] [outputFile]
+
+Data structures and algorithms:
+    BFS: 
+        Standard BFS implementation utilizing a queue. Stops if the desired end 
+        node has been discovered.
+    DFS: 
+        Standard DFS implementation utilizing a stack. Stops if the desired end 
+        node has been discovered
+    NOT: 
+        Implementation of BFS where the algorithm ignores (marks as visited
+        but does not add to the queue) all nodes that are in a vector.
+    ArtistMap:
+        Map from an artist name to the vertex in the graph
+    
+Testing: 
+
+    Ideology:
+        To test my program I created a testing class which would have a method
+        which would test cases for each of the algorithms used, as well as test
+        various edge cases which could possibly throw errors (or not). 
+        For example,I have a method that calls each algorithm with an input 
+        where the path does not exist on the graph. This should in theory throw 
+        an error, and does end up throwing one when the program is ran. To do 
+        this, I created a string stream with an input (similar to that of a file
+        / cin) and then parsed the command, passing in the stream to the 
+        parser. Unfortunately, since my graph was built in a different manner
+        than the test program, I could not use the 'diff' command to compare
+        output from the testing program output to my own. I could, however, 
+        compare edge cases to make sure that the two programs threw errors /
+        found paths under the same conditions.
+
+    Protocol:
+        make Testing 
+        ./Testing
+
+
+Questions:
+    Q1:
+        BFS: The bfs algorithm takes a leveled aproach to graph traversal. This
+             usually means that you will get a shorter path to the desired node
+             than that of DFS. It usually implements a queue data structure and
+             traverses "outward" from the start node.
+
+        DFS: The dfs algorithm behaves a bit differently than dfs. Implemented
+             using a stack instead of a queue, it traverses each neigbor of the 
+             start node fully before going to the next. This usually results in
+             a less-optimal path & the speed depends heavily on the location of
+             the node that you are trying to find (if trying to find a path).
+
+    Q2:
+        If I were to implement the incl method, I would approach it by basically
+        getting the path from A1 to A3, then the path from A3 to A2 (assuming 
+        that A3 is the artist we are trying to include in the path). After this,
+        the two paths would be merged into a path from A1 -> A2 where A3 is 
+        somewhere in the middle.
+
+        I implemented the not command using an edited version of the BFS
+        algorithm. Esentially, if one of the artist nodes in the vector of nodes 
+        to exclude was found, it would be marked as visited but NOT added to the
+        queue. This would, in turn, only allow paths that didn't traverse these
+        artists.
+
+    Q3:
+
+        BFS:
+
+        DFS:
+
+        NOT:

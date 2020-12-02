@@ -1,0 +1,25 @@
+Adele
+Afrojack
+Alessia Cara
+Alicia Keys
+bfs was called.
+"Jay-Z" collaborated with "Nicki Minaj" in "Monster".
+"Nicki Minaj" collaborated with "Justin Bieber" in "Beauty and the Beat".
+"Justin Bieber" collaborated with "Post Malone" in "Forever".
+***
+dfs was called.
+"Jay-Z" collaborated with "Beyonce" in "Crazy In Love".
+"Beyonce" collaborated with "Megan Thee Stallion" in "Savage (Remix)".
+"Megan Thee Stallion" collaborated with "Ty Dolla $ign" in "Hot Girl Summer".
+"Ty Dolla $ign" collaborated with "Ariana Grande" in "safety net".
+***
+bfs was called.
+A path does not exist between "Avril Lavigne" and "Post Malone".
+not was called.
+"Jay-Z" collaborated with "Kanye West" in "Monster".
+"Kanye West" collaborated with "Chance the Rapper" in "Ultralight Beam".
+"Chance the Rapper" collaborated with "Justin Bieber" in "Confident".
+"Justin Bieber" collaborated with "Post Malone" in "Forever".
+***
+invalidcmd is not a command. Please try again.
+***
