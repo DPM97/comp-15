@@ -1,0 +1,19 @@
+"Jay-Z" collaborated with "Beyonce" in "Crazy In Love".
+"Beyonce" collaborated with "Justin Bieber" in "Right Here".
+"Justin Bieber" collaborated with "Post Malone" in "Forever".
+***
+"Jay-Z" collaborated with "Alicia Keys" in "Empire State of Mind".
+"Alicia Keys" collaborated with "Adam Levine" in "YOLO".
+"Adam Levine" collaborated with "Kendrick Lamar" in "YOLO".
+"Kendrick Lamar" collaborated with "Anderson .Paak" in "Tints".
+"Anderson .Paak" collaborated with "Mac Miller" in "Dang!".
+"Mac Miller" collaborated with "Ariana Grande" in "The Way".
+***
+A path does not exist between "Avril Lavigne" and "Post Malone".
+"Jay-Z" collaborated with "Alicia Keys" in "Empire State of Mind".
+"Alicia Keys" collaborated with "Usher" in "My Boo".
+"Usher" collaborated with "Justin Bieber" in "Somebody to Love Remix".
+"Justin Bieber" collaborated with "Post Malone" in "Forever".
+***
+invalidcmd is not a command. Please try again.
+anotherinvalidcmd is not a command. Please try again.

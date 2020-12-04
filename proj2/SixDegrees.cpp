@@ -402,7 +402,7 @@ void SixDegrees::printPath(string v1, string v2)
                              << " collaborated with "
                              << '"' << next.get_name() << '"'
                              << " in "
-                             << '"' << startV.get_collaboration(next) << '"'
+                             << '"' << graph.get_edge(startV, next) << '"'
                              << "."
                              << endl;
                         startV = next;
