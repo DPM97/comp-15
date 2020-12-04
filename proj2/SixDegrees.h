@@ -36,7 +36,8 @@ private:
         void createConnection(string v1, string v2, string song);
 
         void parseCommand(istream &in);
-        void readFromFile(string cmdf);
+        void openFileAndRead(string cmdf);
+        void readFromFile(ifstream &cmdf);
         void chooseCmd(string cmd, string a1, string a2, vector<string> excl);
 
         void bfs(string a1, string a2);

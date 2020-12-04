@@ -22,10 +22,11 @@ Testing: mainTesting.o Testing.o SixDegrees.o Artist.o CollabGraph.o
 %.o: %.cpp ${INCLUDES}
 	${CXX} ${CXXFLAGS} -c -o $@ $<
 
-providephase1: 
-	provide comp15 proj2phase1 \
+provide: 
+	provide comp15 proj2phase2 \
 	Artist.cpp Artist.h CollabGraph.cpp CollabGraph.h main.cpp Makefile README \
-	SixDegrees.cpp SixDegrees.h artists.txt input.txt
+	SixDegrees.cpp SixDegrees.h artists.txt input.txt mainTesting.cpp Testing.h \
+	Testing.cpp
 
 .PHONY: clean
 clean:

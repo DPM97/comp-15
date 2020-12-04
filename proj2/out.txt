@@ -1,7 +1,3 @@
-Adele
-Afrojack
-Alessia Cara
-Alicia Keys
 bfs was called.
 "Jay-Z" collaborated with "Nicki Minaj" in "Monster".
 "Nicki Minaj" collaborated with "Justin Bieber" in "Beauty and the Beat".
@@ -9,9 +5,19 @@ bfs was called.
 ***
 dfs was called.
 "Jay-Z" collaborated with "Beyonce" in "Crazy In Love".
-"Beyonce" collaborated with "Megan Thee Stallion" in "Savage (Remix)".
-"Megan Thee Stallion" collaborated with "Ty Dolla $ign" in "Hot Girl Summer".
-"Ty Dolla $ign" collaborated with "Ariana Grande" in "safety net".
+"Beyonce" collaborated with "Missy Elliot" in "Signs".
+"Missy Elliot" collaborated with "Madonna" in "Into the Hollywood Groove".
+"Madonna" collaborated with "Quavo" in "Champagne Rosé".
+"Quavo" collaborated with "Travie McCoy" in "Know No Better".
+"Travie McCoy" collaborated with "Janelle Monaé" in "Open Happiness".
+"Janelle Monaé" collaborated with "Estelle" in "Do My Thing".
+"Estelle" collaborated with "will.i.am" in "Wait A Minute (Just A Touch)".
+"will.i.am" collaborated with "Wiz Khalifa" in "Feelin’ Myself".
+"Wiz Khalifa" collaborated with "Charlie Puth" in "See You Again".
+"Charlie Puth" collaborated with "Selena Gomez" in "We Don't Talk Anymore".
+"Selena Gomez" collaborated with "Demi Lovato" in "Send It On".
+"Demi Lovato" collaborated with "Iggy Azalea" in "Kingdom Come".
+"Iggy Azalea" collaborated with "Ariana Grande" in "Problem".
 ***
 bfs was called.
 A path does not exist between "Avril Lavigne" and "Post Malone".
@@ -22,4 +28,4 @@ not was called.
 "Justin Bieber" collaborated with "Post Malone" in "Forever".
 ***
 invalidcmd is not a command. Please try again.
-***
+anotherinvalidcmd is not a command. Please try again.

@@ -55,7 +55,7 @@ void SixDegrees::run(string inputfile, string cmdfile, string outputfile)
         }
         else if (cmdfile != "")
         {
-                readFromFile(cmdfile);
+                openFileAndRead(cmdfile);
         }
         else
         {
@@ -71,7 +71,7 @@ void SixDegrees::run(string inputfile, string cmdfile, string outputfile)
 /**
 FUNCTION: parseCommand
 PURPOSE: chooses the correct execution flow given the input
-PARAMETERS: cmd: command string, a1: artist 1, a2: artist 2
+PARAMETERS: in: input stream
 RETURN: void
 MISC: N/A
 **/
@@ -80,8 +80,7 @@ void SixDegrees::parseCommand(istream &in)
         string cmd, a1, a2, curStr;
         vector<string> excl;
         getline(in, cmd);
-        if (cmd == "quit")
-                return;
+        if (cmd == "quit") return;
         getline(in, a1);
         getline(in, a2);
         if (cmd == "not")
@@ -98,19 +97,35 @@ void SixDegrees::parseCommand(istream &in)
 }
 
 /**
-FUNCTION: readFromFile
-PURPOSE: chooses the correct command to execute given the parameters
-PARAMETERS: cmd: command string, a1: artist 1, a2: artist 2
+FUNCTION: openFileAndRead
+PURPOSE: opens th file and calls readFromFile
+PARAMETERS: cmdf: file name
 RETURN: void
 MISC: N/A
 **/
-void SixDegrees::readFromFile(string cmdf)
-{
+void SixDegrees::openFileAndRead(string cmdf) {
         ifstream cmdfile(cmdf);
+        if (!cmdfile.is_open()) 
+        {
+                cerr << cmdf << " cannot be opened." << endl;
+                return;
+        }
+        readFromFile(cmdfile);
+}
+
+/**
+FUNCTION: readFromFile
+PURPOSE: chooses the correct command to execute given the parameters
+PARAMETERS: cmdfile: input stream
+RETURN: void
+MISC: N/A
+**/
+void SixDegrees::readFromFile(ifstream &cmdfile)
+{
         string cmd, out, a1, a2;
         vector<string> excl;
         getline(cmdfile, out);
-        while (out != "quit")
+        while (out != "quit" && !cmdfile.eof())
         {
                 cmd = out;
                 if (cmd != "not" && cmd != "bfs" && cmd != "dfs")
@@ -270,13 +285,8 @@ void SixDegrees::bfs(string a1, string a2)
                 for (int i = 0; i < (int)neighbors.size(); i++)
                 {
                         Artist n = neighbors.at(i);
-                        if (n.get_name() == a2)
-                        {
-                                graph.set_predecessor(n, curNode);
-                                graph.mark_vertex(n);
-                                return printPath(a1, a2);
-                        }
-                        else if (n.get_name() != curNode.get_name() & !graph.is_marked(n))
+                        if (n.get_name() != curNode.get_name() & 
+                        !graph.is_marked(n))
                         {
                                 graph.set_predecessor(n, curNode);
                                 graph.mark_vertex(n);
@@ -305,18 +315,11 @@ void SixDegrees::dfs(string a1, string a2)
         {
                 Artist curNode = s.top();
                 s.pop();
-                if (!graph.is_marked(curNode))
-                        graph.mark_vertex(curNode);
+                if (!graph.is_marked(curNode)) graph.mark_vertex(curNode);
                 vector<Artist> neighbors = graph.get_vertex_neighbors(curNode);
                 for (int i = 0; i < (int)neighbors.size(); i++)
                 {
                         Artist n = neighbors.at(i);
-                        if (n.get_name() == a2)
-                        {
-                                graph.set_predecessor(n, curNode);
-                                graph.mark_vertex(n);
-                                return printPath(a1, a2);
-                        }
                         if (!graph.is_marked(n))
                         {
                                 graph.set_predecessor(n, curNode);
@@ -357,13 +360,8 @@ void SixDegrees::excl(string a1, string a2, vector<string> excl)
                         {
                                 graph.mark_vertex(n);
                         }
-                        else if (n.get_name() == a2)
-                        {
-                                graph.set_predecessor(n, curNode);
-                                graph.mark_vertex(n);
-                                return printPath(a1, a2);
-                        }
-                        else if (n.get_name() != curNode.get_name() && !graph.is_marked(n))
+                        else if (n.get_name() != curNode.get_name() 
+                                && !graph.is_marked(n))
                         {
 
                                 graph.set_predecessor(n, curNode);

@@ -1,6 +1,6 @@
 Title:          Project 2:  Six Degrees of Collaboration
 Author:         Dylan Maloy
-Time invested:  9 hours give or take
+Time invested:  9 hours
 ----------------------------------------------------------------------
 
 Purpose:
@@ -54,11 +54,13 @@ How to build and run program:
 
 Data structures and algorithms:
     BFS: 
-        Standard BFS implementation utilizing a queue. Stops if the desired end 
-        node has been discovered.
+        Standard BFS implementation utilizing a queue. Adds start node to
+        queue, pops front -> traverses all neighbors and adds to queue if they 
+        have not been marked.... Continues to loop until queue is empty.
     DFS: 
-        Standard DFS implementation utilizing a stack. Stops if the desired end 
-        node has been discovered
+        Standard DFS implementation utilizing a stack. Pushes start node to
+        stack, pops top -> traverses all neighbors and pushes to stack if
+        they have not been marked... Continues to loop until stack is empty.
     NOT: 
         Implementation of BFS where the algorithm ignores (marks as visited
         but does not add to the queue) all nodes that are in a vector.
@@ -115,8 +117,15 @@ Questions:
 
     Q3:
 
-        BFS:
+        BFS: O(V + E). Worst case senerio, each vertex V will be looked at.
+             Additionally, in a worst case scenerio, all of the edges will be
+             looked at also. There will not be duplicates because we have marked
+             visited nodes & checking this is just linear. Thus, the final 
+             complexity is just O(V+E).
 
-        DFS:
+        DFS: O(V + E). Same as BFS, just a different method of traversing the 
+        nodes. Thus, the final complexity is just O(V+E).
 
-        NOT:
+        NOT: O(V + E). Esentially the same as the BFS algorithm, just edited
+             to not include certain nodes. Worst case scenerio is still the same
+             as bfs, though.
